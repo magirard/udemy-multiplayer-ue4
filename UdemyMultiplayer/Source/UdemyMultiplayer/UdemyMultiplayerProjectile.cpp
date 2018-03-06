@@ -2,6 +2,7 @@
 
 #include "UdemyMultiplayerProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Components/SphereComponent.h"
 
 AUdemyMultiplayerProjectile::AUdemyMultiplayerProjectile() 
@@ -40,4 +41,6 @@ void AUdemyMultiplayerProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* Ot
 
 		Destroy();
 	}
+
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), mExplosion, GetActorLocation());
 }
